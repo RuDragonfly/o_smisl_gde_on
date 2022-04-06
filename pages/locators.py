@@ -17,3 +17,5 @@ class ProductPageLocators:
     PRODUCT_MESSAGE = (By.CSS_SELECTOR, "#messages > div:nth-child(1) .alertinner strong")
     COST_BASKET = (By.CSS_SELECTOR,'.alert-info .alertinner strong')
     PRICE = (By.CSS_SELECTOR,'.col-sm-6>.price_color')
+    BTN_INFO = (By.CSS_SELECTOR,'#messages > div:nth-child(3) .alertinner .btn-info')
+    

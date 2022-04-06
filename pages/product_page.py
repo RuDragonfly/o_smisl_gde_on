@@ -1,6 +1,9 @@
 from .base_page import BasePage
 from .locators import ProductPageLocators
+from selenium import webdriver
 from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 import time
 
 
@@ -23,6 +26,7 @@ class PageObject(BasePage):
         assert product_message.text == product_name.text, 'The message is not equal to the product name'
         
     def should_be_price_eq_cost_basket(self): 
+        #WebDriverWait(self.browser, 15).until(EC.text_to_be_present_in_element(ProductPageLocators.PRICE))
         price = self.browser.find_element(*ProductPageLocators.PRICE)
         print(price.text)
         cost_basket = self.browser.find_element(*ProductPageLocators.COST_BASKET)

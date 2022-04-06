@@ -1,8 +1,8 @@
 from selenium.common.exceptions import NoSuchElementException
 from selenium.common.exceptions import NoAlertPresentException 
-#from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 import math
-import time
 
 
 class BasePage():
@@ -26,13 +26,13 @@ class BasePage():
         x = alert.text.split(" ")[2]
         answer = str(math.log(abs((12 * math.sin(float(x))))))
         alert.send_keys(answer)
-        time.sleep(1)
+        WebDriverWait(self.browser, 2).until(EC.alert_is_present())
         alert.accept()
-        time.sleep(1)                       
         try:
             alert = self.browser.switch_to.alert
             alert_text = alert.text
             print(f"Your code: {alert_text}")
+            WebDriverWait(self.browser, 2).until(EC.alert_is_present())
             alert.accept()
         except NoAlertPresentException:
             print("No second alert presented")
