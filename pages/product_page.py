@@ -2,12 +2,12 @@ from .base_page import BasePage
 from .locators import ProductPageLocators
 from selenium import webdriver
 from selenium.webdriver.common.by import By
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
-import time
+#from selenium.webdriver.support.ui import WebDriverWait
+#from selenium.webdriver.support import expected_conditions as EC
+#import time
 
 
-class PageObject(BasePage):
+class ProductPage(BasePage):
     
     def should_be_page_object(self):
         self.should_be_basket_click()
@@ -32,5 +32,12 @@ class PageObject(BasePage):
         cost_basket = self.browser.find_element(*ProductPageLocators.COST_BASKET)
         print(cost_basket.text)
         assert price.text == cost_basket.text, 'The price is not equal to the cost of the bascet'
+    
+    
+    def should_not_be_success_message(self):
+        assert self.is_not_element_present(*ProductPageLocators.PRODUCT_MESSAGE), \
+        "Success message is presented, but should not be"
       
-        
+    def should_disappeared_success_message(self):
+        assert self.is_not_element_present(*ProductPageLocators.PRODUCT_MESSAGE), \
+        "Success message is not disappeared, but should be"
