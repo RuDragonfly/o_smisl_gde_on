@@ -20,6 +20,12 @@ class BasePage():
     def go_to_login_page(self):
         link = self.browser.find_element(*BasePageLocators.LOGIN_LINK)
         link.click()
+        #alert = self.browser.switch_to.alert
+        #alert.accept()
+        
+    def view_basket(self):
+        link = self.browser.find_element(*BasePageLocators.BTN_VIEW_BASKET)
+        link.click()
         
     def should_be_login_link(self):
         assert self.is_element_present(*BasePageLocators.LOGIN_LINK), "Login link is not presented"
@@ -53,6 +59,7 @@ class BasePage():
         alert.send_keys(answer)
         WebDriverWait(self.browser, 2).until(EC.alert_is_present())
         alert.accept()
+        #WebDriverWait(self.browser, 2).until(EC.alert_is_present())
         try:
             alert = self.browser.switch_to.alert
             alert_text = alert.text

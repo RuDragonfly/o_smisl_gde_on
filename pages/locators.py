@@ -1,7 +1,9 @@
 from selenium.webdriver.common.by import By
 
 class MainPageLocators():
-    pass
+    
+    BASKET_ITEMS = (By.CSS_SELECTOR, ".basket-items")
+    BASKET_IS_IMPTY = (By.CSS_SELECTOR,'#content_inner > p')
     
 class LoginPageLocators:
     REGISTRATONS_EMAIL = (By.CSS_SELECTOR, "#id_registration-email")
@@ -21,4 +23,5 @@ class ProductPageLocators:
 class BasePageLocators:
     LOGIN_LINK = (By.CSS_SELECTOR, "#login_link")
     LOGIN_LINK_INVALID = (By.CSS_SELECTOR, "#login_link_inc")
+    BTN_VIEW_BASKET = (By.CSS_SELECTOR, ".btn-group > a:nth-child(1)")
     
