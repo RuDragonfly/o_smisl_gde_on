@@ -61,7 +61,7 @@ class BasePage():
         alert.send_keys(answer)
         WebDriverWait(self.browser, 2).until(EC.alert_is_present())
         alert.accept()
-        #WebDriverWait(self.browser, 2).until(EC.alert_is_present())
+       
         try:
             alert = self.browser.switch_to.alert
             alert_text = alert.text
